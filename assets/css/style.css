@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*,
+*::before,
+*::after{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style-type: none;
+        text-decoration: none;
+}
+
+html{
+        font-family: 'Roboto', sans-serif;
+}
+
+body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+}
+
+.cards-container{
+        width: 75%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.card{
+        height: 100%;
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        border-radius: .4em;
+        transition: flex .6s ease;
+        overflow: hidden;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card+.card{
+        margin: 0 0 0 1em;
+}
+
+.card.active{
+        flex: 10 !important;
+}
+
+.card.card.active .profile-container{
+        display: grid;
+        opacity: 1;
+}
+
+.profile-container{
+        display: grid;
+        justify-content: flex-start;
+        opacity: 0;
+        padding: 1em;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+}
+
+.profile-container > div{
+        display: flex;
+        justify-content: flex-start;
+}
+
+.profile-photo{
+        grid-area: 'photo';
+        grid-column: 1/2;
+        grid-row: 1/3;
+        margin: 0 .7em 0 0;
+        align-items: center;
+        user-select: none;
+}
+
+.profile-photo > img{
+        width: 4em;
+        border-radius: 50%;
+}
+
+.profile-name{
+        font-size: 1em;
+        font-weight: 500;
+        grid-column: 2/3;
+        grid-row: 1/2;
+        align-items: flex-end;
+        color: #fff;
+}
+
+.profile-social{
+        font-size: .8em;
+        font-weight: 300;
+        grid-column: 2/3;
+        grid-row: 2/3;
+        align-items: flex-start;
+}
+
+.profile-social > a{
+        color: #fff;
+        padding: .2em;
+        transition: color .2s ease;
+}
+
+.profile-social > a:hover{
+        color: rgba(255, 255, 255, 0.5);
+}
+
+.poster-container{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: .4s ease;
+}
+
+.poster-container.show{
+        display: flex;
+}
+
+.poster-container > .poster{
+        display: block;
+        height: 90%;
+        clip-path: inset(50% 0% 49% 0%);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: clip-path .4s ease;
+}
+
+.poster.clip{
+        clip-path: inset(0);
+}
+
+.close-poster{
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        width: 30px;
+        height: 32px;
+        cursor: pointer;
+}
+
+.close-poster::before,
+.close-poster::after{
+        content: '';
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        top: 50%;
+}
+
+.close-poster::before{
+        transform: rotate(45deg);
+}
+
+.close-poster::after{
+        transform: rotate(-45deg);
+}
